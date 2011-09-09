@@ -1,7 +1,7 @@
 goog.provide('namespace.project.App');
 
 goog.require('namespace.project.Model');
-goog.require('namespace.project.Controller');
+goog.require('namespace.project.Router');
 goog.require('namespace.project.View');
 goog.require('namespace.project.Command');
 
@@ -27,8 +27,8 @@ namespace.project.App = function( page ) {
 				dom.output = $("#output");
 				
 				model		= new namespace.project.Model();
-				controller	= new namespace.project.Controller( model );
-				view		= new namespace.project.View( model, controller, dom );
+				view		= new namespace.project.View( {el: dom.output, model: model} );
+				controller	= new namespace.project.Router( model, view );
 				
 				controller.command(namespace.project.Command.START_TIMER);
 				

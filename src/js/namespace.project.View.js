@@ -1,27 +1,29 @@
 goog.provide('namespace.project.View');
 
 goog.require('namespace.project.Model');
-goog.require('namespace.project.Controller');
+goog.require('namespace.project.Router');
 
 goog.require('Logger');
 
 /**
  * View component of the Model View Controller implementation
- * @param {*} model The model for this view
- * @param {*} controller The controller for this view
- * @param {Object} dom References to DOM objects used in this view
+ * @param {*} el The dom object used in this view
  * @constructor
  */
-namespace.project.View = function( model, controller, dom ) {
+namespace.project.View = Backbone.View.extend({
 	
-	this._controller = controller;
-	this._model = model;
-	this._dom = dom;
-	
-	var self = this;
-	
-	this._controller.listen(this, namespace.project.Notification.TIME_UPDATED, this.updateTime);
-}
+
+	initialize: function(){
+		$(this.el).append('<div id="time_display"></div>');	
+	},
+	/**
+	 * Updates the current time displayed in the view
+	 * @param {Date} time The time to display
+	 */
+	updateTime: function(){
+		this.$('#time_display').html( namespace.project.View.TIME_PREFIX + this.model.getTime().toString() );
+	}
+});
 
 /**
  * The message to prefix the current time with
@@ -29,11 +31,3 @@ namespace.project.View = function( model, controller, dom ) {
  * @type {string}
  */
 namespace.project.View.TIME_PREFIX = "The Time Is: ";
-
-/**
- * Updates the current time displayed in the view
- * @param {Date} time The time to display
- */
-namespace.project.View.prototype.updateTime = function( ) {
-	this._dom.output.html( namespace.project.View.TIME_PREFIX + this._model.getTime().toString() );
-}

@@ -2,9 +2,10 @@
 // Please do not edit.
 goog.addDependency('../../../../src/js/Dispatcher.js', ['Dispatcher'], []);
 goog.addDependency('../../../../src/js/Logger.js', ['Logger'], []);
-goog.addDependency('../../../../src/js/namespace.project.App.js', ['namespace.project.App'], ['Logger', 'namespace.project.Command', 'namespace.project.Controller', 'namespace.project.Model', 'namespace.project.View']);
+goog.addDependency('../../../../src/js/namespace.project.App.js', ['namespace.project.App'], ['Logger', 'namespace.project.Command', 'namespace.project.Model', 'namespace.project.Router', 'namespace.project.View']);
 goog.addDependency('../../../../src/js/namespace.project.Command.js', ['namespace.project.Command'], []);
 goog.addDependency('../../../../src/js/namespace.project.Controller.js', ['namespace.project.Controller'], ['Dispatcher', 'Logger', 'namespace.project.Command', 'namespace.project.Model', 'namespace.project.Notification']);
-goog.addDependency('../../../../src/js/namespace.project.Model.js', ['namespace.project.Model'], ['Logger']);
+goog.addDependency('../../../../src/js/namespace.project.Model.js', ['namespace.project.Model', 'namespace.project.Views'], ['Logger']);
 goog.addDependency('../../../../src/js/namespace.project.Notification.js', ['namespace.project.Notification'], []);
-goog.addDependency('../../../../src/js/namespace.project.View.js', ['namespace.project.View'], ['Logger', 'namespace.project.Controller', 'namespace.project.Model']);
+goog.addDependency('../../../../src/js/namespace.project.Router.js', ['namespace.project.Router'], ['Dispatcher', 'Logger', 'namespace.project.Command', 'namespace.project.Model', 'namespace.project.Notification']);
+goog.addDependency('../../../../src/js/namespace.project.View.js', ['namespace.project.View'], ['Logger', 'namespace.project.Model', 'namespace.project.Router']);

@@ -1,31 +1,40 @@
 goog.provide('namespace.project.Model');
+goog.provide('namespace.project.Views');
 
 goog.require('Logger');
 
 /**
  * Model component of the Model View Controller implementation
- * @param {Object=} data Initial data for the model
  * @constructor
  */
-namespace.project.Model = function( data ) {
-	/**
-	 * @private
-	 * The data stored in this Model
-	 * @type {Object}
-	 */
-	this._data = data || {};
-}
+namespace.project.Model = Backbone.Model.extend({
 
-/**
- * @return {Date} The current time.
- */
-namespace.project.Model.prototype.getTime = function() {
-	return this._data.time;
-}
+   /**
+    * Model default attributes 
+    */
+    defaults: {
+	"time":	new Date()
+    },
 
-/**
- * @param {Date} time The current time
- */
-namespace.project.Model.prototype.setTime = function( time ) {
-	this._data.time = time;
-}
+   /**
+    * Setup event bindings and attribute values
+    */
+    initialize: function(){
+    },
+
+   /**
+    * @return {Date} The current time.
+    */
+    getTime: function(){
+	return this.get("time");
+    },
+
+  /**
+   * @param {Date} time The current time
+   */
+   setTime: function( time ){
+	this.set("time", time );
+   }
+
+});
+
